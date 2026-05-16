@@ -22,8 +22,20 @@ public class Main {
 
         // Percorrendo a lista e demonstrando polimorfismo
         for (Personagem p : personagens) {
-            p.exibirStatus();
+            System.out.println(p.toString());
             p.usarHabilidade();
+            String tipo = (p instanceof Mago) ? "Mago" : (p instanceof Guerreiro) ? "Guerreiro" : "Desconhecido";
+            System.out.println("O personagem " + p.getNome() + " é um " + tipo + " de nível " + p.getNivel() + ".\n");
         }
+
+        // Demonstrando equals() e hashCode()
+        Personagem[] personagensArray = personagens.toArray(new Personagem[0]); // Convertendo para array para facilitar
+                                                                                // a comparação
+        Boolean GandalfEqualsMerlin = personagensArray[1].equals(personagensArray[0]); // Comparando Gandalf com Merlin
+        int gandalfHashCode = personagensArray[1].hashCode(); // Hash code de Gandalf
+        int merlinHashCode = personagensArray[0].hashCode(); // Hash code de Merlin
+        System.out.println("Comparando Gandalf com Merlin: " + (GandalfEqualsMerlin ? "São iguais" : "São diferentes"));
+        System.out.println("Hash code de Gandalf: " + gandalfHashCode);
+        System.out.println("Hash code de Merlin: " + merlinHashCode);
     }
 }

@@ -32,10 +32,16 @@ public abstract class Personagem {
     }
 
     public int getNivel() {
+        if (nivel < 1) {
+            throw new IllegalArgumentException("Nível do personagem deve ser pelo menos 1.");
+        }
         return nivel;
     }
 
     public int getPontosDeVida() {
+        if (pontosDeVida < 1) {
+            throw new IllegalArgumentException("Pontos de vida do personagem deve ser pelo menos 1.");
+        }
         return pontosDeVida;
     }
 
@@ -69,10 +75,16 @@ public abstract class Personagem {
     // *
     // * @return String formatada com todos os atributos do personagem
     // */
-    // @Override
-    // public String toString() {
-
-    // }
+    @Override
+    public String toString() {
+        return "Personagem{" +
+                "nome='" + nome + '\'' +
+                ", classe='" + classe + '\'' +
+                ", nivel=" + nivel +
+                ", pontosDeVida=" + pontosDeVida +
+                ", poderBase=" + poderBase +
+                '}';
+    }
 
     // /**
     // * Sobrescrita do método equals() para comparar personagens.
@@ -81,18 +93,23 @@ public abstract class Personagem {
     // * @param obj Objeto a ser comparado
     // * @return true se os personagens forem iguais, false caso contrário
     // */
-    // @Override
-    // public boolean equals(Object obj) {
-
-    // }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Personagem that = (Personagem) obj;
+        return Objects.equals(nome, that.nome) && Objects.equals(classe, that.classe);
+    }
 
     // /**
     // * Sobrescrita do método hashCode() para ser consistente com equals().
     // *
     // * @return Código hash baseado no nome e classe
     // */
-    // @Override
-    // public int hashCode() {
-
-    // }
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, classe);
+    }
 }

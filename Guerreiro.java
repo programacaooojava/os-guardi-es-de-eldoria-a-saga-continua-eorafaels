@@ -16,6 +16,6 @@ public class Guerreiro extends Personagem {
      */
     @Override
     public void usarHabilidade() {
-        System.out.println(this.getNome() + " utiliza espada giratória!");
+        System.out.println(this.getNome() + " desfere golpe devastador!");
     }
 }
