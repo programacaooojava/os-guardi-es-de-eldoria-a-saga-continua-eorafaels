@@ -70,6 +70,14 @@ public abstract class Personagem {
 
     public abstract void usarHabilidade();
 
+    protected void atribuirBencao(double valor) {
+        if (valor < 0) {
+            throw new IllegalArgumentException("Valor da bênção deve ser positivo.");
+        }
+        this.poderBase += valor;
+        System.out.println(nome + " recebeu uma bênção! Poder base aumentado para " + poderBase);
+    }
+
     // /**
     // * Sobrescrita do método toString() para exibir informações do personagem.
     // *
